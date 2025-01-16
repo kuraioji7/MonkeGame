@@ -3,28 +3,24 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master  # Trigger the workflow on push to the main branch
+      - master  # Triggers the workflow on push to the master branch
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-      - name: Set up Godot
-        uses: firebelley/setup-godot@v1
+      - name: Set Up Godot Export
+        uses: dulvui/godot-4-html-export@v1
         with:
-          version: '4.3'  # Specify your Godot version
-
-      - name: Export HTML5
-        run: |
-          mkdir -p export
-          godot --export "HTML5" "export/MonkeGame.html"
+          godot-version: 4.3
+          working-directory: ./monkegame
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./export
+          publish_dir: ./monkegame/export
