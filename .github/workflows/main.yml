@@ -32,9 +32,9 @@ jobs:
 
       - name: Export Game
         run: |
-          godot --headless --export-release "Web" export/MonkeGame.html
+          godot --headless --export-release "MonkeGame" "export/MonkeGame.html"
         env:
-          GODOT_VERBOSE: "1"  # Enables verbose logging for debugging
+          GODOT_VERBOSE: "1"
 
       - name: Add COI Service Worker
         run: |
