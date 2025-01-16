@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://r43vdo73sqtc"]
+
+[ext_resource type="Script" path="res://scripts/monkey.gd" id="1_gb005"]
+[ext_resource type="Texture2D" uid="uid://ruju5yd5bta2" path="res://assets/sprites/Monkey/MankeyJungle_Idle_strip5.png" id="1_jgxk3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0520"]
+atlas = ExtResource("1_jgxk3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ltf0"]
+atlas = ExtResource("1_jgxk3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0p6j"]
+atlas = ExtResource("1_jgxk3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kv1a2"]
+atlas = ExtResource("1_jgxk3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wntx7"]
+atlas = ExtResource("1_jgxk3")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1c27j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0520")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ltf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0p6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kv1a2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wntx7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o6161"]
+radius = 5.0
+
+[node name="Monke" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_gb005")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -9)
+sprite_frames = SubResource("SpriteFrames_1c27j")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.0423576
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_o6161")
